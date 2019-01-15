@@ -20,10 +20,8 @@ var authRoutes = require("./routes/index");
 
 
 //seedDB();
-process.env.DATABASEURL
-mongoose.connect( process.env.DATABASEURL ,{ useNewUrlParser: true });
-//mongoose.connect('mongodb://RaresLungescu:Pneumosuge11@ds157844.mlab.com:57844/hikio');
 
+mongoose.connect( process.env.DATABASEURL ,{ useNewUrlParser: true });
 
 
 app.set("view engine", "ejs");

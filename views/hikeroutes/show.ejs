@@ -3,56 +3,63 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<p class="lead">Hik.io</p>
-			<div class="list-group">
-				<li class="list-group-item">Info 1</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
-			</div>
+            <!--//map will go here-->
 		</div>
 		<div class="col-md-9">
-			<div class="thumbnail">
-				<img class="img-responsive" src="<%= hikeroute.image %>">
-				<div class="caption-full">
-					<h4><%=hikeroute.name%></h4>
-					<p><%= hikeroute.description %></p>
-					<p><em>Submitted By <%= hikeroute.author.username %></em></p>
+            <div class="card mt-5 mb-3">
+                <img class=" card-img-top" src="<%= hikeroute.image %>" alt="<%=hikeroute.name%>">
+                <div class="card-body">
+                    <h5 class="card-title"><%=hikeroute.name%></h5>
+                    <p><em>Submitted By <%= hikeroute.author.username %></em></p>
+                    <p class="card-text"><%= hikeroute.description %></p>
                     <%if(currentUser && hikeroute.author.id.equals(currentUser._id)){%>
-                        <a class="btn btn-sm btn-warning" href="/hikeroutes/<%=hikeroute._id%>/edit">Edit</a>
-                        <form class="delete-btn" action="/hikeroutes/<%=hikeroute._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                    <a class="btn btn-sm btn-warning" href="/hikeroutes/<%=hikeroute._id%>/edit">Edit</a>
+                    <form class="delete-btn" action="/hikeroutes/<%=hikeroute._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                     <%}%>
                 </div>
-			</div>
-			<div class="well">
-				<div class="text-right">
-				<a class="btn btn-success" href="/hikeroutes/<%= hikeroute._id %>/comments/new">Add New Comment</a>
-				</div>
+            </div>
+
+			<div class="card">
+                <div class="card-body">
+				    <div class="text-right">
+				        <a class="btn btn-success" href="/hikeroutes/<%= hikeroute._id %>/comments/new">Add New Comment</a>
+				    </div>
 				<hr>
-				<% hikeroute.comments.forEach(function(comment){%>
-					<div class="row">
-						<div class="col-md-12">
-							<strong><%= comment.author.username %></strong>
-							<span class="pull-right">10 Days Ago</span>
-							<p> 
-								<%= comment.text %>
-							</p>
+                <div class="row">
+				    <% hikeroute.comments.forEach(function(comment){%>
+						<div class="col-md-12 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="float-left">
+                                        <p class="card-title"><strong><%= comment.author.username %></strong></p>
+                                        <p  class="card-text"><%= comment.text %></p>
+                                    </div>
+                                    <div class="float-right">
+                                        <p class="pull-right">10 Days Ago</p>
+
+
+
                             <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
-                            <a class="btn btn-xs btn-warning"
-                               href="/hikeroutes/<%=hikeroute._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                            <form class="delete-btn" action="/hikeroutes/<%=hikeroute._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                            </form>
+                            <div class="float-right">
+                                <a class="btn btn-xs btn-warning"
+                                   href="/hikeroutes/<%=hikeroute._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form class="delete-btn" action="/hikeroutes/<%=hikeroute._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                </form>
+                            </div>
                             <%}%>
 						</div>
-					</div>
-					
-
+                        </div>
+                     </div>
+                    </div>
 				<% }) %>
-			</div>
-		</div>
-	</div>
+			    </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
 
 
