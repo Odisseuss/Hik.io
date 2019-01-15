@@ -20,9 +20,12 @@ var authRoutes = require("./routes/index");
 
 
 //seedDB();
-//var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";
-//mongoose.connect('mongodb://localhost:27017/hik_io', { useNewUrlParser: true });
-mongoose.connect('mongodb://RaresLungescu:Pneumosuge11@ds157844.mlab.com:57844/hikio');
+process.env.DATABASEURL
+mongoose.connect( process.env.DATABASEURL ,{ useNewUrlParser: true });
+//mongoose.connect('mongodb://RaresLungescu:Pneumosuge11@ds157844.mlab.com:57844/hikio');
+
+
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
