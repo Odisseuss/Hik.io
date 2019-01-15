@@ -20,7 +20,8 @@ var authRoutes = require("./routes/index");
 
 
 //seedDB();
-mongoose.connect('mongodb://localhost:27017/hik_io', { useNewUrlParser: true });
+//mongoose.connect('mongodb://localhost:27017/hik_io', { useNewUrlParser: true });
+mongodb://<RaresLungescu>:<Pneumosuge11>@ds157844.mlab.com:57844/hikio
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
